@@ -13,7 +13,7 @@ This is application is from a great course called [React For Beginners](https://
 
 ### Get the application
 ```sh
-git clone https://github.com/jcdesousa/angular-toh.git angular-toh
+git clone https://github.com/jcdesousa/react-first-app.git react-first-app
 ```
 
 ### Install the dependencies
@@ -21,7 +21,7 @@ git clone https://github.com/jcdesousa/angular-toh.git angular-toh
 Go to the project directory and install the dependencies.
 
 ```sh
-cd angular-toh
+cd react-first-app
 npm install
 ```
 
@@ -174,9 +174,9 @@ Create a method called `loadSamples` that updates the state with the samples fis
 
 loadSamples = () => {
     this.setState({
-      fishes: sampleFishes
+        fishes: sampleFishes
     });
-  }
+}
 ```
 
 Whenever `this.setState` is called, an update to the component is scheduled, causing React to merge in the passed state update and rerender the component along with its descendants. 
@@ -189,24 +189,24 @@ The usual pattern here is pass down a function from `App` to `Inventory` that ge
 // src/components/App.js
 
 <Inventory
-        addFish={this.addFish}
-        removeFish={this.removeFish}
-        loadSamples={this.loadSamples}
-        fishes={this.state.fishes}
-        updateFish={this.updateFish}
-    />
+    addFish={this.addFish}
+    removeFish={this.removeFish}
+    loadSamples={this.loadSamples}
+    fishes={this.state.fishes}
+    updateFish={this.updateFish}
+/>
 ```
 
 After the `AddFishForm` component inside of the render method of `Inventory` component, add a `Load Sample Fishes` button with a click event that invokes the method named `loadSamples` passed by the `props`.
 ```js
-    // src/components/Inventory.js
+// src/components/Inventory.js
     
-    <button onClick={this.props.loadSamples}>Load Sample Fishes</button>
+<button onClick={this.props.loadSamples}>Load Sample Fishes</button>
 ```
 
 
 ### 5 - Functional Components
-We’ve removed the constructor, and in fact, React supports a simpler syntax called **functional components** for component types like `Header` that only consist of a `render` method. Rather than define a `class extending React.Component`, simply write a function that takes `props` and returns what should be rendered.
+React supports a simpler syntax called **functional components** for component types like `Header` that only consist of a `render` method. Rather than define a `class extending React.Component`, simply write a function that takes `props` and returns what should be rendered.
 
 Replace the whole `Header` class with this function:
 ```js
