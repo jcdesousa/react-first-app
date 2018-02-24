@@ -1,4 +1,4 @@
-# Create Your First React app
+# Building Your First React app
 
 This workshop covers the fundamentals of React.  
 
@@ -205,7 +205,7 @@ After the `AddFishForm` component inside of the render method of `Inventory` com
 ```
 
 
-### 5 - Functional Components
+### 5 - Functional Components 
 React supports a simpler syntax called **functional components** for component types like `Header` that only consist of a `render` method. Rather than define a `class extending React.Component`, simply write a function that takes `props` and returns what should be rendered.
 
 Replace the whole `Header` class with this function:
