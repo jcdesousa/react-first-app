@@ -5,7 +5,7 @@ This workshop covers the fundamentals of React.
 This app called "Catch of the Day is an real-time app for a trendy seafood market where price and quantity available are variable and can change at a moment's notice. 
 
 
-This is application is from a great course called [React For Beginners](https://reactforbeginners.com/) by Wes Bos. Please have a look at his training courses [here](http://wesbos.com/courses/).
+This application is from a great course called [React For Beginners](https://reactforbeginners.com/) by Wes Bos. Please have a look at his training courses [here](http://wesbos.com/courses/).
 
 
 ## **Setup**
