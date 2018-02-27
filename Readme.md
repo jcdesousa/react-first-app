@@ -67,17 +67,17 @@ By default, runs tests related to files changed since the last commit.
 
 When the form is submitted, we need to get the text from the input box and transition from the url `/` to `/store/:storeId`.
 
-Open `StorePicker` and create the method `goToStore`.
+Open `StorePicker` and change the method `goToStore`.
 
 ```js
 // src/components/StorePicker.js
 
-
-goToStore = (event) => {
+  goToStore = (event) => {
     event.preventDefault();
     const storeId = this.storeInput.value;
-    this.context.router.transitionTo(`/store/${storeId}`);
-}
+
+    this.props.history.push(`/store/${storeId}`);
+  }
 ```
 We need to listen for an submit event on the form and call `goToStore` when it.
 
@@ -86,12 +86,18 @@ We need to listen for an submit event on the form and call `goToStore` when it.
 
 <form className="store-selector" onSubmit={this.goToStore}>
 ```
-We need to create a parameterized route in `index.js` that matches the path pattern to render the component `App`.
+We need to import the `App` component and create a parameterized route in `index.js` that matches the path pattern to render the component.
+
+```js
+// src/index.js
+import App from './components/App';
+
+```
 
 ```js
 // src/index.js
 
-<Match pattern="/store/:storeId" component={App} />
+<Route path="/store/:storeId" component={App} />
 ```
 ### 2 - Our First Component
 
@@ -144,9 +150,10 @@ To render multiple items in React, we pass an `array of React elements`. The mos
 
 <ul className="list-of-fishes">
     {
-        Object
-        .keys(this.state.fishes)
-        .map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder}/>)
+      Object.keys(this.state.fishes)
+        .map(key => (
+          <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />
+        ))
     }
 </ul>
 ```
@@ -194,7 +201,7 @@ The usual pattern here is pass down a function from `App` to `Inventory` that ge
     loadSamples={this.loadSamples}
     fishes={this.state.fishes}
     updateFish={this.updateFish}
-/>
+  />
 ```
 
 After the `AddFishForm` component inside of the render method of `Inventory` component, add a `Load Sample Fishes` button with a click event that invokes the method named `loadSamples` passed by the `props`.
@@ -239,11 +246,19 @@ You’ll need to change `this.props.tagline` to `props.tagline`. Many components
 
 As your app grows, you can catch a lot of bugs with typechecking. For some applications, you can use JavaScript extensions like Flow or TypeScript to typecheck your whole application. But even if you don’t use those, React has some built-in typechecking abilities. To run typechecking on the props for a component, you can assign the special propTypes property.
 
-On the `Header` component set the prop `tagline` of type `string` and `required`
+Import the `PropTypes`.
+
+```js
+// src/components/Header.js
+
+import PropTypes from 'prop-types';
+```
+
+On the `Header` component set the prop `tagline` to type `string` and `required`
 
 ```js
 Header.propTypes = {
-  tagLine: React.PropTypes.string.isRequired
+  tagline: PropTypes.string.isRequired
 };
 ```
 
@@ -251,11 +266,11 @@ On the `Inventory` component set the prop `loadSamples` as a `function` and `req
 
 ```js
 Inventory.propTypes = {
-  fishes: React.PropTypes.object.isRequired,
-  updateFish: React.PropTypes.func.isRequired,
-  removeFish: React.PropTypes.func.isRequired,
-  addFish: React.PropTypes.func.isRequired,
-  loadSamples: React.PropTypes.func.isRequired,
+  fishes: PropTypes.object.isRequired,
+  updateFish: PropTypes.func.isRequired,
+  removeFish: PropTypes.func.isRequired,
+  addFish: PropTypes.func.isRequired,
+  loadSamples: PropTypes.func.isRequired,
 };
 ```
 

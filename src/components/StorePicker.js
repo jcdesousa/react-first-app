@@ -1,23 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+  };
+
+  goToStore = (event) => {
+    event.preventDefault();
+    // #TODO - first grab the text from the box
+
+    // #TODO - second we're going to transition from / to /store/:storeId
+
+  }
+
   render() {
     // Any where else
     return (
       <form className="store-selector">
         {/* #TODO - onSubmit call method goToStore */}
         <h2>Please Enter A Store</h2>
-        {/* #TODO - create an reference to storeInput */}
-        <input type="text" required placeholder="Store Name" defaultValue={getFunName()} />
+        <input
+          type="text"
+          required
+          placeholder="Store Name"
+          defaultValue={getFunName()}
+          ref={input => {
+            this.storeInput = input;
+          }}
+        />
         <button type="submit">Visit Store →</button>
       </form>
-    )
+    );
   }
-}
-
-StorePicker.contextTypes = {
-  router: React.PropTypes.object
 }
 
 export default StorePicker;
