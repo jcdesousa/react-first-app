@@ -4,14 +4,15 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 // #TODO - Import fish component
-
+import Fish from './Fish';
 // #TODO - Import the sample fishes
-
+import sampleFishes from '../sample-fishes';
 import base from '../base';
 
 class App extends React.Component {
   state = {
-    fishes: {},
+    fishes: {
+    },
     order: {},
   };
 
@@ -65,7 +66,11 @@ class App extends React.Component {
   };
 
   // #TODO - Create loadSamples and update state with the sample fishes
-
+  loadSamples = () => {
+    this.setState({ 
+      fishes: sampleFishes
+    })
+  }
 
   addToOrder = (key) => {
     // take a copy of our state
@@ -86,9 +91,14 @@ class App extends React.Component {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
-          <Header tagline="Fresh Seafood Market" />
+          <Header />
           <ul className="list-of-fishes">
             { /* #TODO - Show a list of component fishes */ }
+            {
+              Object.keys(this.state.fishes)
+              .map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />)
+            }
+
           </ul>
         </div>
         <Order
@@ -100,6 +110,7 @@ class App extends React.Component {
         <Inventory
           addFish={this.addFish}
           removeFish={this.removeFish}
+          loadSamples={this.loadSamples}
           // #TODO - Pass load samples method
           fishes={this.state.fishes}
           updateFish={this.updateFish}

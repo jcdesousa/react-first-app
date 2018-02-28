@@ -73,6 +73,8 @@ class Inventory extends React.Component {
         <AddFishForm addFish={this.props.addFish} />
 
         {/* #TODO - Add a button to load sample Fishes */ }
+        <button onClick={this.props.loadSamples}>Load Sample Fishes</button>
+
       </div>
     );
   }
@@ -85,6 +87,7 @@ Inventory.propTypes = {
   updateFish: PropTypes.func.isRequired,
   removeFish: PropTypes.func.isRequired,
   addFish: PropTypes.func.isRequired,
+  loadSamples: PropTypes.func.isRequired,
   // #TODO - Add PropType validation to loadSamples
 };
 
