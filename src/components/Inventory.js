@@ -86,7 +86,6 @@ Inventory.propTypes = {
   removeFish: PropTypes.func.isRequired,
   addFish: PropTypes.func.isRequired,
   // #TODO - Add PropType validation to loadSamples
-  loadSamples: PropTypes.func.isRequired,
 };
 
 export default Inventory;

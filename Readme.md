@@ -67,6 +67,8 @@ By default, runs tests related to files changed since the last commit.
 
 When the form is submitted, we need to get the text from the input box and transition from the url `/` to `/store/:storeId`.
 
+
+
 Open `StorePicker` and change the method `goToStore`.
 
 ```js
@@ -79,6 +81,11 @@ Open `StorePicker` and change the method `goToStore`.
     this.props.history.push(`/store/${storeId}`);
   }
 ```
+
+
+The ref attribute takes a callback function, and the callback will be executed immediately after the component is mounted or unmounted.
+Using the ref callback just to set a property on the class is a common pattern for accessing DOM elements.
+
 We need to listen for an submit event on the form and call `goToStore` when it.
 
 ```html

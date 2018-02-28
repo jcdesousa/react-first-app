@@ -110,7 +110,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  params: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired
 }
 
 export default App;
